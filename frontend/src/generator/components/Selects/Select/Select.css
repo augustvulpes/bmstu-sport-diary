@@ -1,0 +1,24 @@
+.generator__form-select {
+    width: 50%;
+}
+
+.generator__form-select select {
+    width: 100%;
+    padding: 15px;
+    color: white;
+    background: transparent;
+    border: 2px solid var(--main-blue);
+    border-radius: 40px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.generator__form-select select:hover {
+    box-shadow: 0 0 10px 0 var(--main-blue);
+}
+
+@media (min-width: 992px) {
+    .generator__form-select {
+        width: 20%;
+    }
+}

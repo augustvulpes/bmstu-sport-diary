@@ -1,0 +1,26 @@
+.generator__input {
+    width: 100%;
+    padding: 20px;
+    color: white;
+    font-size: 16px;
+    background: transparent;
+    border: 2px solid var(--main-blue);
+    border-radius: 40px;
+    transition: 0.3s;
+}
+
+.generator__input:hover {
+    box-shadow: 0 0 10px 0 var(--main-blue);
+}
+
+.generator__input:focus {
+    box-shadow: 0 0px 15px 0 var(--main-blue);
+}
+
+.generator__input-short[type=text] {
+    width: 50%;
+}
+
+.generator__input[type=date] {
+    cursor: pointer;
+}

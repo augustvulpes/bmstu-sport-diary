@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(20, 18, 26);
+  text-align: center;
+}
+
+h1, input, label, select {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}

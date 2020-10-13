@@ -1,0 +1,16 @@
+.generator__form-selects {
+    margin: auto;
+    margin-top: 40px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+@media (min-width: 992px) {
+    .generator__form-selects {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

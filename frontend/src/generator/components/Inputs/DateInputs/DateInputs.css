@@ -1,0 +1,28 @@
+.generator__form-dateInputs {
+    margin: auto;
+    margin-top: 40px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.generator__form-dateInput {
+    width: 70%;
+}
+
+.generator__form-dateInput label {
+    color: white;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .generator__form-dateInputs {
+        flex-direction: row;
+    }
+
+    .generator__form-dateInput {
+        width: 30%;
+    }
+}
