@@ -11,6 +11,11 @@
     border-radius: 40px;
     transition: 0.3s;
     cursor: pointer;
+    outline: none;
+}
+
+.generator__form-select option {
+    color: black;
 }
 
 .generator__form-select select:hover {

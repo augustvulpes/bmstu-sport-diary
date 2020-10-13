@@ -7,6 +7,7 @@
     border: 2px solid var(--main-blue);
     border-radius: 40px;
     transition: 0.3s;
+    outline: none;
 }
 
 .generator__input:hover {
