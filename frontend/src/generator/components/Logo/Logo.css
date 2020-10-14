@@ -1,11 +1,17 @@
 .generator__logo {
     color: white;
     text-shadow: 0 0 5px white;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 200;
 }
 
 .generator__logo span {
     color: var(--main-blue);
     text-shadow: 0 0 5px var(--main-blue);
+}
+
+@media (min-width: 768px) {
+    .generator__logo {
+        font-size: 50px;
+    }
 }

@@ -1,5 +1,5 @@
 .generator__form-select {
-    width: 50%;
+    width: 60%;
 }
 
 .generator__form-select select {
@@ -15,7 +15,8 @@
 }
 
 .generator__form-select option {
-    color: black;
+    color: white;
+    background: var(--main-dark);
 }
 
 .generator__form-select select:hover {

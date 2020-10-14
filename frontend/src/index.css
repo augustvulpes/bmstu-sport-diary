@@ -3,11 +3,12 @@
 }
 
 body {
-  background: rgb(20, 18, 26);
+  background: var(--main-dark);
   text-align: center;
 }
 
-h1, input, label, select {
+h1, input, label, select, option,
+button {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
 }

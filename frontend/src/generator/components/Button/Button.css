@@ -1,0 +1,23 @@
+.button {
+    padding: 20px 40px;
+    color: white;
+    font-size: 16px;
+    background: transparent;
+    border: 2px solid var(--main-blue);
+    border-radius: 40px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.button:disabled {
+    opacity: 0.5;
+}
+
+.button:hover {
+    background: var(--main-blue);
+}
+
+.button:disabled:hover {
+    background: transparent;
+    cursor: default;
+}

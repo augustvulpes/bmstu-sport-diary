@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Logo from '../components/Logo/Logo';
-import './Generator.css';
 import TextInputs from '../components/Inputs/TextInputs/TextInputs';
 import DateInputs from '../components/Inputs/DateInputs/DateInputs';
 import Selects from '../components/Selects/Selects';
+import Button from '../components/Button/Button';
+import './Generator.css';
 
 const Generator = props => {
+    const [isValid, setIsValid] = useState(false);
+    
     const [textData, setTextData] = useState({
         owner: {
             placeholder: 'Ф.И.О.',
@@ -67,7 +70,7 @@ const Generator = props => {
         },
         secondDay: {
             label: 'Второй день',
-            options: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+            options: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
         },
         wish: {
             label: 'Желание заниматься',
@@ -78,6 +81,20 @@ const Generator = props => {
             options: ['Лёгкая', 'Средняя', 'Сложная']
         }
     });
+
+    useEffect(() => {
+        let newIsValid = true;
+        
+        for (const input in textData) {
+            newIsValid = textData[input].isValid && newIsValid;
+        };
+
+        for (const input in dateData) {
+            newIsValid = dateData[input].isValid && newIsValid;
+        };
+
+        setIsValid(newIsValid);
+    }, [textData, dateData]);
 
     const changeTextInputHandler = (event, inputName) => {
         const isValid = !!event.target.value;
@@ -110,7 +127,7 @@ const Generator = props => {
     return (
         <div className='generator'>
             <Logo />
-            <form className='generator__form'>
+            <form method='POST' className='generator__form'>
                 <TextInputs 
                     data={textData}
                     onChange={changeTextInputHandler} />
@@ -119,6 +136,9 @@ const Generator = props => {
                     onChange={changeDateInputHandler} />
                 <Selects
                     data={selectData} />
+                <Button 
+                    type='submit'
+                    disabled={!isValid}>Создать</Button>
             </form>
         </div>
     );

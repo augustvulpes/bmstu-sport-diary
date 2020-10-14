@@ -5,7 +5,9 @@ import './Select.css';
 const Select = props => {
     const options = props.options.map(option => {
         return (
-            <option value={option}>{option}</option>
+            <option 
+                value={option}
+                key={option}>{option}</option>
         );
     });
 
