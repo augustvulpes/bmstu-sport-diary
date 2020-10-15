@@ -14,7 +14,7 @@ const DateInputs = props => {
                     onChange={(event) => props.onChange(event, key)}
                     value={props.data[key].value}
                     id={key}
-                    />
+                    key={key} />
             </div>
         );
     };

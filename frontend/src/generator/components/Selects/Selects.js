@@ -11,7 +11,8 @@ const Selects = props => {
                 <label htmlFor={key}>{props.data[key].label}</label>
                 <Select
                     options={props.data[key].options}
-                    id={key} />
+                    id={key}
+                    onChange={props.onChange} />
             </div>
         );
     };

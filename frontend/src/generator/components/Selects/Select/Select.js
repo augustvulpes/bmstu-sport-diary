@@ -12,7 +12,9 @@ const Select = props => {
     });
 
     return (
-        <select id={props.id}>
+        <select
+            onChange={event => props.onChange(event, props.id)}
+            id={props.id} >
             {options}
         </select>
     );

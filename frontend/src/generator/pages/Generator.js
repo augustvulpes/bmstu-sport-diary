@@ -63,22 +63,26 @@ const Generator = props => {
         }
     });
 
-    const [selectData] = useState({
+    const [selectData, setSelectData] = useState({
         firstDay: {
             label: 'Первый день',
-            options: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+            options: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+            currentValue: 'Понедельник'
         },
         secondDay: {
             label: 'Второй день',
-            options: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+            options: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+            currentValue: 'Воскресенье'
         },
         wish: {
             label: 'Желание заниматься',
-            options: ['Есть', 'Нет']
+            options: ['Есть', 'Нет'],
+            currentValue: 'Есть'
         },
         difficulty: {
             label: 'Сложность',
-            options: ['Лёгкая', 'Средняя', 'Сложная']
+            options: ['Лёгкая', 'Средняя', 'Сложная'],
+            currentValue: 'Лёгкая'
         }
     });
 
@@ -122,12 +126,48 @@ const Generator = props => {
             }
         };
         setDateData(updatedDateData);
-    }
+    };
+
+    const changeSelectHandler = (event, selectName) => {
+        const updatedSelectData = {
+            ...selectData,
+            [selectName]: {
+                ...selectData[selectName],
+                currentValue: event.target.value
+            }
+        };
+        setSelectData(updatedSelectData);
+    };
+
+    const submitHandler = async event => {
+        event.preventDefault();
+
+        const responseData = await fetch(
+            'http://localhost:5000/api/create',
+            {
+                method: 'POST',
+                body: JSON.stringify({
+                ...textData,
+                ...dateData,
+                ...selectData
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+        const parsedData = await responseData.json();
+
+        console.log(parsedData);
+    };
 
     return (
         <div className='generator'>
             <Logo />
-            <form method='POST' className='generator__form'>
+            <form 
+                onSubmit={submitHandler} 
+                method='POST' 
+                className='generator__form'>
                 <TextInputs 
                     data={textData}
                     onChange={changeTextInputHandler} />
@@ -135,10 +175,11 @@ const Generator = props => {
                     data={dateData}
                     onChange={changeDateInputHandler} />
                 <Selects
-                    data={selectData} />
+                    data={selectData}
+                    onChange={changeSelectHandler} />
                 <Button 
                     type='submit'
-                    disabled={!isValid}>Создать</Button>
+                    disabled={!isValid && false}>Создать</Button>
             </form>
         </div>
     );
