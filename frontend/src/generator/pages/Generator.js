@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import createPdf from '../../utils/createPdf';
+
 import Logo from '../components/Logo/Logo';
 import TextInputs from '../components/Inputs/TextInputs/TextInputs';
 import DateInputs from '../components/Inputs/DateInputs/DateInputs';
@@ -142,23 +144,7 @@ const Generator = props => {
     const submitHandler = async event => {
         event.preventDefault();
 
-        const responseData = await fetch(
-            'http://localhost:5000/api/create',
-            {
-                method: 'POST',
-                body: JSON.stringify({
-                ...textData,
-                ...dateData,
-                ...selectData
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        );
-        const parsedData = await responseData.json();
-
-        console.log(parsedData);
+        createPdf();
     };
 
     return (
