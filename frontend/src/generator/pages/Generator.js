@@ -24,23 +24,23 @@ const Generator = props => {
             isValid: false
         },
         weight: {
-            placeholder: 'Вес',
+            placeholder: 'Вес (кг)',
             value: '',
             isValid: false
         },
         height: {
-            placeholder: 'Рост',
+            placeholder: 'Рост (см)',
             value: '',
             isValid: false
         },
         pulseMin: {
-            placeholder: 'Пульс (min)',
+            placeholder: 'Пульс (до)',
             value: '',
             isValid: false,
             short: true
         },
         pulseMax: {
-            placeholder: 'Пульс (max)',
+            placeholder: 'Пульс (после)',
             value: '',
             isValid: false,
             short: true
@@ -144,7 +144,7 @@ const Generator = props => {
     const submitHandler = async event => {
         event.preventDefault();
 
-        createPdf();
+        createPdf(textData, dateData, selectData);
     };
 
     return (
@@ -165,7 +165,7 @@ const Generator = props => {
                     onChange={changeSelectHandler} />
                 <Button 
                     type='submit'
-                    disabled={!isValid && false}>Создать</Button>
+                    disabled={!isValid}>Создать</Button>
             </form>
         </div>
     );
