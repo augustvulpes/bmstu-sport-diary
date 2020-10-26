@@ -17,7 +17,7 @@ const warmups = [
 const ends = [
     'Наклоны к носкам (10 раз)\nДыхательные упражнения (1 минута)\nБег с подъемом коленей (1 минута)\nРазведение рук и ног (30 секунд)'
 ];
-const days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 const time = ['17:00 - 17:30', '17:30 - 18:00', '18:00 - 18:30', '18:30 - 19:00', '19:00 - 19:30', '19:30 - 20:00'];
 
 const createLines = (start, end, firstDay, secondDay, pulseMin, pulseMax, wish, difficulty) => {
@@ -52,13 +52,12 @@ const createLines = (start, end, firstDay, secondDay, pulseMin, pulseMax, wish, 
         ];
     };
 
-    const editedPulseMin = isNaN(+pulseMin) ? 80: +pulseMin;
-    const editedPulseMax = isNaN(+pulseMax) ? 120: +pulseMax;
+    const editedPulseMin = isNaN(+pulseMin) ? 80 : +pulseMin;
+    const editedPulseMax = isNaN(+pulseMax) ? 120 : +pulseMax;
 
     let i = 0;
     while (first < second) {
-        first = new Date(Date.parse(first) + 86400000)
-        const currentDayInd = first.getDay()
+        const currentDayInd = first.getDay();
         if (currentDayInd === firstDayInd || currentDayInd === secondDayInd) {
             lines.push([
                 `${first.getDate()}/${first.getMonth() + 1}/${first.getFullYear()}\n${getRandomElement(time)}`,
@@ -69,6 +68,7 @@ const createLines = (start, end, firstDay, secondDay, pulseMin, pulseMax, wish, 
             ]);
         };
 
+        first = new Date(Date.parse(first) + 86400000)
         i += 1;
     };
 
